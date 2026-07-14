@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zatto — Masato de arroz artesanal. Tradición, sabor y frescura en cada sorbo. 100% natural, presentación de 1 litro. Pide el tuyo al 304 554 0568.">
+  <title>Zatto — Masato de Arroz Artesanal</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Karla:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --crema: #F6ECD9;
+      --oliva-oscuro: #675417;
+      --dorado: #CEA054;
+      --marron: #342107;
+      --texto: #4A3F2A;
+      --hover: #837427;
+      --blanco-calido: #FDF8EE;
+      --verde-suave: #A3A551;
+      --sombra: 0 10px 30px rgba(52, 33, 7, 0.12);
+      --radio: 18px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Karla', sans-serif;
+      background-color: var(--crema);
+      color: var(--texto);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--marron);
+      line-height: 1.2;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: var(--hover); }
+
+    .contenedor {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      background-color: var(--oliva-oscuro);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(52, 33, 7, 0.25);
+    }
+
+    .navbar .contenedor {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .marca img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--crema);
+      object-fit: cover;
+    }
+
+    .marca span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--crema);
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--crema);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      padding: 8px 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--dorado);
+      border-bottom-color: var(--dorado);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu-toggle svg { stroke: var(--crema); }
+
+    /* ===== Botones ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--dorado);
+      color: var(--marron);
+      font-family: 'Karla', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 2px solid var(--dorado);
+      cursor: pointer;
+      transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+      box-shadow: 0 6px 16px rgba(206, 160, 84, 0.4);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      background-color: #dbb26b;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(206, 160, 84, 0.5);
+    }
+
+    .btn:active { transform: translateY(0) scale(0.98); }
+
+    .btn-secundario {
+      background: transparent;
+      color: var(--crema);
+      border-color: var(--crema);
+      box-shadow: none;
+    }
+
+    .btn-secundario:hover,
+    .btn-secundario:focus-visible {
+      background-color: rgba(246, 236, 217, 0.15);
+      box-shadow: none;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 88px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -140px;
+      right: -140px;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(206, 160, 84, 0.28), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero .contenedor {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-etiqueta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(163, 165, 81, 0.22);
+      color: var(--oliva-oscuro);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 .destacado { color: var(--hover); font-style: italic; }
+
+    .hero .lema {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--oliva-oscuro);
+      margin-bottom: 18px;
+    }
+
+    .hero p.descripcion {
+      font-size: 1.1rem;
+      max-width: 48ch;
+      margin-bottom: 32px;
+    }
+
+    .hero-acciones { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+
+    .hero-acciones .telefono {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--marron);
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .hero-acciones .telefono:hover { color: var(--hover); }
+
+    .hero-imagen {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-imagen::before {
+      content: "";
+      position: absolute;
+      inset: 8% 12%;
+      background: radial-gradient(circle, rgba(253, 248, 238, 0.9), rgba(206, 160, 84, 0.18) 70%, transparent);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .hero-imagen img {
+      position: relative;
+      z-index: 1;
+      max-height: 480px;
+      width: auto;
+      filter: drop-shadow(0 24px 32px rgba(52, 33, 7, 0.25));
+      animation: flotar 5s ease-in-out infinite;
+    }
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-imagen img { animation: none; }
+      html { scroll-behavior: auto; }
+      * { transition-duration: 0.01ms !important; }
+    }
+
+    /* ===== Franja de confianza ===== */
+    .franja {
+      background-color: var(--oliva-oscuro);
+      padding: 26px 0;
+    }
+
+    .franja .contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 18px;
+    }
+
+    .franja-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--crema);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .franja-item svg { flex-shrink: 0; stroke: var(--dorado); }
+
+    /* ===== Secciones ===== */
+    section { padding: 80px 0; }
+
+    .seccion-encabezado {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 52px;
+    }
+
+    .seccion-encabezado .kicker {
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      color: var(--hover);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .seccion-encabezado h2 {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      margin-bottom: 14px;
+    }
+
+    /* ===== Historia / Qué es ===== */
+    .historia .contenedor {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .historia-logo {
+      display: flex;
+      justify-content: center;
+    }
+
+    .historia-logo img {
+      max-width: 380px;
+      width: 100%;
+      filter: drop-shadow(0 16px 28px rgba(52, 33, 7, 0.18));
+      border-radius: 50%;
+    }
+
+    .historia h2 { font-size: clamp(1.9rem, 4vw, 2.5rem); margin-bottom: 18px; }
+
+    .historia p { margin-bottom: 16px; font-size: 1.05rem; }
+
+    .historia .firma {
+      font-family: 'Caveat', cursive;
+      font-size: 1.7rem;
+      color: var(--oliva-oscuro);
+      margin-top: 10px;
+    }
+
+    /* ===== Beneficios ===== */
+    .beneficios { background-color: var(--blanco-calido); }
+
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .tarjeta {
+      background-color: var(--crema);
+      border: 1px solid rgba(103, 84, 23, 0.15);
+      border-radius: var(--radio);
+      padding: 36px 28px;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra);
+    }
+
+    .tarjeta .icono {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background-color: rgba(206, 160, 84, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tarjeta .icono svg { stroke: var(--oliva-oscuro); }
+
+    .tarjeta h3 { font-size: 1.25rem; margin-bottom: 10px; }
+
+    /* ===== Producto ===== */
+    .producto .contenedor {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .producto-visual {
+      background: linear-gradient(160deg, var(--blanco-calido), rgba(206, 160, 84, 0.25));
+      border-radius: var(--radio);
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      box-shadow: var(--sombra);
+    }
+
+    .producto-visual img {
+      max-height: 440px;
+      width: auto;
+      filter: drop-shadow(0 18px 26px rgba(52, 33, 7, 0.22));
+    }
+
+    .producto h2 { font-size: clamp(1.9rem, 4vw, 2.5rem); margin-bottom: 8px; }
+
+    .producto .precio-etiqueta {
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      color: var(--hover);
+      margin-bottom: 18px;
+    }
+
+    .producto ul {
+      list-style: none;
+      margin: 22px 0 32px;
+    }
+
+    .producto ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 1.05rem;
+    }
+
+    .producto ul li svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      stroke: var(--verde-suave);
+    }
+
+    .presentacion {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(103, 84, 23, 0.1);
+      border: 1px dashed var(--oliva-oscuro);
+      color: var(--oliva-oscuro);
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 12px;
+      margin-bottom: 26px;
+    }
+
+    /* ===== CTA final ===== */
+    .cta-final {
+      background: linear-gradient(150deg, var(--oliva-oscuro), #4d3f10);
+      text-align: center;
+      border-radius: 0;
+    }
+
+    .cta-final h2 {
+      color: var(--crema);
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      margin-bottom: 14px;
+    }
+
+    .cta-final p {
+      color: rgba(246, 236, 217, 0.85);
+      max-width: 52ch;
+      margin: 0 auto 34px;
+      font-size: 1.1rem;
+    }
+
+    .cta-final .lema-cta {
+      font-family: 'Caveat', cursive;
+      font-size: 1.8rem;
+      color: var(--dorado);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background-color: var(--oliva-oscuro);
+      border-top: 1px solid rgba(246, 236, 217, 0.2);
+      padding: 44px 0 28px;
+      color: var(--crema);
+    }
+
+    .footer .contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer .marca span { font-size: 1.3rem; }
+
+    .footer .marca img { width: 44px; height: 44px; }
+
+    .footer-contacto {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.98rem;
+    }
+
+    .footer-contacto a {
+      color: var(--crema);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-contacto a:hover { color: var(--dorado); }
+
+    .footer-contacto svg { stroke: var(--dorado); }
+
+    .footer .copy {
+      width: 100%;
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(246, 236, 217, 0.65);
+      margin-top: 18px;
+      border-top: 1px solid rgba(246, 236, 217, 0.15);
+      padding-top: 18px;
+    }
+
+    /* ===== WhatsApp flotante ===== */
+    .whatsapp-flotante {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 200;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background-color: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease;
+    }
+
+    .whatsapp-flotante:hover { transform: scale(1.08); }
+
+    .whatsapp-flotante svg { fill: #fff; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .hero .contenedor,
+      .historia .contenedor,
+      .producto .contenedor {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero { padding: 48px 0 64px; }
+      .hero-imagen img { max-height: 380px; }
+      .historia-logo { order: -1; }
+      .historia-logo img { max-width: 280px; }
+      .beneficios-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+      section { padding: 60px 0; }
+    }
+
+    @media (max-width: 720px) {
+      .menu-toggle { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--oliva-oscuro);
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 24px 20px;
+        box-shadow: 0 12px 20px rgba(52, 33, 7, 0.3);
+      }
+
+      .nav-links.abierto { display: flex; }
+
+      .nav-links li { width: 100%; }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 4px;
+        border-bottom: 1px solid rgba(246, 236, 217, 0.15);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <header class="navbar">
+    <div class="contenedor">
+      <a class="marca" href="#inicio" aria-label="Zatto — ir al inicio">
+        <img src="img/logo.png" alt="Logo de Zatto, masato de arroz artesanal">
+        <span>ZATTO</span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" onclick="toggleMenu(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+      <nav aria-label="Navegación principal">
+        <ul class="nav-links" id="menu">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#historia">Nuestra historia</a></li>
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#producto">Producto</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="inicio">
+    <div class="contenedor">
+      <div>
+        <span class="hero-etiqueta">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          100% natural · Hecho artesanalmente
+        </span>
+        <h1>Masato de arroz <span class="destacado">Zatto</span></h1>
+        <p class="lema">Tradición, sabor y frescura en cada sorbo.</p>
+        <p class="descripcion">
+          El sabor de la tradición hecho en casa. Preparamos nuestro masato de arroz
+          con recetas de siempre, ingredientes naturales y todo el cariño artesanal,
+          para que disfrutes una bebida fresca y auténtica.
+        </p>
+        <div class="hero-acciones">
+          <a class="btn" href="https://wa.me/573045540568?text=%C2%A1Hola!%20Quiero%20pedir%20un%20masato%20de%20arroz%20Zatto%20de%201%20litro." target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            Comprar ahora
+          </a>
+          <a class="telefono" href="tel:+573045540568">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            304 554 0568
+          </a>
+        </div>
+      </div>
+      <div class="hero-imagen">
+        <img src="img/producto.png" alt="Botella de 1 litro de masato de arroz Zatto con tapa roja y etiqueta artesanal" width="420" height="480">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Franja de confianza ===== -->
+  <div class="franja" aria-label="Sellos de calidad">
+    <div class="contenedor">
+      <div class="franja-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+        <span>100% Natural</span>
+      </div>
+      <div class="franja-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35C6.4 17 3 13.35 3 9.5 3 6.42 5.42 4 8.5 4c1.74 0 3.41.81 4.5 2.09A5.98 5.98 0 0 1 17.5 4C20.58 4 23 6.42 23 9.5c0 3.85-3.4 7.5-9 11.85z" transform="translate(-1 0)"/></svg>
+        <span>Hecho artesanalmente</span>
+      </div>
+      <div class="franja-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/></svg>
+        <span>Receta tradicional</span>
+      </div>
+      <div class="franja-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <span>Entrega a domicilio</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Historia ===== -->
+  <section class="historia" id="historia">
+    <div class="contenedor">
+      <div>
+        <span class="seccion-encabezado kicker" style="text-align:left; margin:0 0 6px; display:block;">Nuestra historia</span>
+        <h2>Un sabor que nace de la tradición</h2>
+        <p>
+          El masato de arroz es una bebida tradicional que ha pasado de generación en
+          generación, refrescando hogares y celebraciones. En <strong>Zatto</strong> rescatamos
+          esa receta de siempre y la preparamos como se hacía antes: con paciencia,
+          ingredientes naturales y mucho amor.
+        </p>
+        <p>
+          Cada botella es elaborada artesanalmente en pequeños lotes, cuidando la
+          fermentación justa para lograr ese sabor dulce, fresco y auténtico que
+          te transporta a casa.
+        </p>
+        <p class="firma">Producto de origen natural 🌾</p>
+      </div>
+      <div class="historia-logo">
+        <img src="img/etiqueta.png" alt="Etiqueta de Zatto con espigas de arroz, un vaso de masato y el lema: tradición, sabor y frescura en cada sorbo">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Beneficios ===== -->
+  <section class="beneficios" id="beneficios">
+    <div class="contenedor">
+      <div class="seccion-encabezado">
+        <span class="kicker">¿Por qué elegir Zatto?</span>
+        <h2>Bueno por naturaleza</h2>
+        <p>Una bebida pensada para cuidarte y consentirte al mismo tiempo.</p>
+      </div>
+      <div class="beneficios-grid">
+        <article class="tarjeta">
+          <div class="icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          </div>
+          <h3>100% Natural</h3>
+          <p>Sin conservantes ni saborizantes artificiales. Solo arroz, ingredientes naturales y tradición.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <h3>Hecho con amor</h3>
+          <p>Elaborado artesanalmente en pequeños lotes, con la dedicación de una receta de familia.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg>
+          </div>
+          <h3>Frescura garantizada</h3>
+          <p>Se prepara fresco y se entrega frío, listo para disfrutar en cualquier momento del día.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Producto ===== -->
+  <section class="producto" id="producto">
+    <div class="contenedor">
+      <div class="producto-visual">
+        <img src="img/producto.png" alt="Presentación de 1 litro del masato de arroz Zatto">
+      </div>
+      <div>
+        <span class="seccion-encabezado kicker" style="text-align:left; margin:0 0 6px; display:block;">Nuestro producto</span>
+        <h2>Masato de Arroz Zatto</h2>
+        <p class="precio-etiqueta">El favorito de la casa</p>
+        <p>
+          Nuestra única y consentida presentación: una botella generosa de
+          <strong>1 litro</strong>, perfecta para compartir en familia o disfrutar
+          bien fría durante varios días.
+        </p>
+        <ul>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Elaborado con arroz seleccionado y fermentación natural.</span>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Sin conservantes, colorantes ni aditivos artificiales.</span>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Textura cremosa y sabor dulce tradicional.</span>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Consérvalo refrigerado para mantener su frescura.</span>
+          </li>
+        </ul>
+        <div class="presentacion">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4"/><path d="M12 2v3"/><path d="M8 5h8l1 4c.67 2.67 1 5.33 1 8a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5c0-2.67.33-5.33 1-8z"/></svg>
+          Presentación única: 1 litro
+        </div>
+        <br>
+        <a class="btn" href="https://wa.me/573045540568?text=%C2%A1Hola!%20Quiero%20pedir%20un%20masato%20de%20arroz%20Zatto%20de%201%20litro." target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Comprar ahora
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA final ===== -->
+  <section class="cta-final" id="contacto">
+    <div class="contenedor">
+      <span class="lema-cta">¿Se te antojó?</span>
+      <h2>Pide tu masato hoy mismo</h2>
+      <p>
+        Escríbenos por WhatsApp o llámanos y coordina tu pedido.
+        Te lo llevamos fresquito y listo para disfrutar.
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a class="btn" href="https://wa.me/573045540568?text=%C2%A1Hola!%20Quiero%20pedir%20un%20masato%20de%20arroz%20Zatto%20de%201%20litro." target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.511-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Pedir por WhatsApp
+        </a>
+        <a class="btn btn-secundario" href="tel:+573045540568">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Llamar: 304 554 0568
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="contenedor">
+      <a class="marca" href="#inicio">
+        <img src="img/logo.png" alt="">
+        <span>ZATTO</span>
+      </a>
+      <div class="footer-contacto">
+        <a href="tel:+573045540568">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          304 554 0568
+        </a>
+        <a href="https://wa.me/573045540568" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#CEA054" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.511-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <p style="font-family:'Caveat', cursive; font-size:1.4rem; color:#CEA054;">
+        Tradición, sabor y frescura en cada sorbo.
+      </p>
+      <p class="copy">© 2026 Zatto — Masato de arroz artesanal. Hecho con amor.</p>
+    </div>
+  </footer>
+
+  <!-- ===== WhatsApp flotante ===== -->
+  <a class="whatsapp-flotante" href="https://wa.me/573045540568?text=%C2%A1Hola!%20Quiero%20pedir%20un%20masato%20de%20arroz%20Zatto." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.511-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <script>
+    function toggleMenu(btn) {
+      const menu = document.getElementById('menu');
+      const abierto = menu.classList.toggle('abierto');
+      btn.setAttribute('aria-expanded', abierto);
+      btn.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+    }
+
+    // Cerrar el menú al hacer clic en un enlace (móvil)
+    document.querySelectorAll('#menu a').forEach(function (enlace) {
+      enlace.addEventListener('click', function () {
+        document.getElementById('menu').classList.remove('abierto');
+        document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
